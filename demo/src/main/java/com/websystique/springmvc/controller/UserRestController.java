@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.websystique.springmvc.model.User;
+import com.websystique.springmvc.service.JdbcService;
 import com.websystique.springmvc.service.UserService;
  
 @RestController
@@ -23,6 +24,9 @@ public class UserRestController extends AbstractController {
  
     @Autowired
     UserService userService;  //Service which will do all data retrieval/manipulation work
+    
+    @Autowired
+    JdbcService jdbcService;
  
     
     //-------------------Retrieve All Users--------------------------------------------------------
@@ -31,6 +35,9 @@ public class UserRestController extends AbstractController {
     public ResponseEntity<List<User>> listAllUsers() {
     	
         List<User> users = userService.findAllUsers();
+        
+        int cnt = jdbcService.test();
+        getLogger().info("{} tables found.", cnt);
         
         getLogger().info("{} users found.", users.size());
         
