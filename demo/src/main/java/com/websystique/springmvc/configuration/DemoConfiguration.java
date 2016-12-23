@@ -34,26 +34,20 @@ public class DemoConfiguration extends WebMvcConfigurerAdapter{
 		registry.addResourceHandler("/static/**").addResourceLocations("/static/");
 	}
 	
-	 @Bean
-	    public DataSource getDataSource() {
-	        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-	        dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-	        dataSource.setUrl("jdbc:oracle:thin:@192.168.8.37:1521:ora11g");
-	        dataSource.setUsername("content");
-	        dataSource.setPassword("content4me");
-	         
-	        return dataSource;
-	    }
-	     
-//	    @Bean
-//	    public ContactDAO getContactDAO() {
-//	        return new ContactDAOImpl(getDataSource());
-//	    }
-	 
-	 @Bean
-	 public JdbcTemplate getContactDAO() {
-		 return new JdbcTemplate(getDataSource());
-	 }
-	 
+	@Bean
+	public DataSource getDataSource() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+		dataSource.setUrl("jdbc:oracle:thin:@192.168.8.37:1521:ora11g");
+		dataSource.setUsername("content");
+		dataSource.setPassword("content4me");
+		
+		return dataSource;
+	}
+	     	 
+	@Bean
+	public JdbcTemplate getJdbcTemplate() {
+		return new JdbcTemplate(getDataSource());
+	}
 
 }
