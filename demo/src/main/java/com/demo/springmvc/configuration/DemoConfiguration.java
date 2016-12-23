@@ -3,9 +3,11 @@ package com.demo.springmvc.configuration;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -18,7 +20,20 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.demo.springmvc")
+@PropertySource("classpath:jdbc.properties")
 public class DemoConfiguration extends WebMvcConfigurerAdapter{
+	
+	@Value("${jdbc.url}")
+	private String jdbcUrl;
+	
+	@Value("${jdbc.username}")
+	private String jdbcUsername;
+	
+	@Value("${jdbc.password}")
+	private String jdbcPassword;
+	
+	@Value("${jdbc.driverClassName}")
+	private String driverClassName;
 	
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
@@ -36,11 +51,12 @@ public class DemoConfiguration extends WebMvcConfigurerAdapter{
 	
 	@Bean
 	public DataSource getDataSource() {
+		
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-		dataSource.setUrl("jdbc:oracle:thin:@192.168.8.37:1521:ora11g");
-		dataSource.setUsername("content");
-		dataSource.setPassword("content4me");
+		dataSource.setDriverClassName(driverClassName);
+		dataSource.setUrl(jdbcUrl);
+		dataSource.setUsername(jdbcUsername);
+		dataSource.setPassword(jdbcPassword);
 		
 		return dataSource;
 	}
