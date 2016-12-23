@@ -1,4 +1,4 @@
-package com.websystique.springmvc.service.vo;
+package com.demo.springmvc.service.vo;
 
 /**
  *

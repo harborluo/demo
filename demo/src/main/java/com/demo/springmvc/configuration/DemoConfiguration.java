@@ -1,4 +1,4 @@
-package com.websystique.springmvc.configuration;
+package com.demo.springmvc.configuration;
 
 
 import javax.sql.DataSource;

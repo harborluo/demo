@@ -1,12 +1,12 @@
-package com.websystique.springmvc.service;
+package com.demo.springmvc.service;
 
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
-import com.websystique.springmvc.service.vo.BatchEntity;
-import com.websystique.springmvc.service.vo.TableColumnEntity;
+import com.demo.springmvc.service.vo.BatchEntity;
+import com.demo.springmvc.service.vo.TableColumnEntity;
 
 
 

@@ -1,4 +1,4 @@
-package com.websystique.springmvc.service;
+package com.demo.springmvc.service;
 
 
 import java.sql.PreparedStatement;
@@ -18,10 +18,10 @@ import org.springframework.jdbc.support.rowset.SqlRowSetMetaData;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.websystique.springmvc.service.vo.BatchEntity;
-import com.websystique.springmvc.service.vo.ClobString;
-import com.websystique.springmvc.service.vo.TableColumnEntity;
-import com.websystique.utils.Utils;
+import com.demo.springmvc.service.vo.BatchEntity;
+import com.demo.springmvc.service.vo.ClobString;
+import com.demo.springmvc.service.vo.TableColumnEntity;
+import com.demo.utils.Utils;
 
 @Service("jdbcService")
 public class JdbcServiceImpl implements JdbcService {

@@ -1,4 +1,4 @@
-package com.websystique.utils;
+package com.demo.utils;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.websystique.springmvc.service.vo.Cell;
+import com.demo.springmvc.service.vo.Cell;
 
 public class Utils {
 	

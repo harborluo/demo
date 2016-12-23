@@ -1,4 +1,4 @@
-package com.websystique.springmvc.service;
+package com.demo.springmvc.service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
