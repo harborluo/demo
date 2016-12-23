@@ -13,7 +13,7 @@ public class DemoInitializer extends AbstractAnnotationConfigDispatcherServletIn
   
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return null;
+    	return new Class[] {};
     }
   
     @Override
@@ -26,5 +26,7 @@ public class DemoInitializer extends AbstractAnnotationConfigDispatcherServletIn
     	Filter [] singleton = { new CORSFilter() };
     	return singleton;
 	}
+    
+    
  
 }

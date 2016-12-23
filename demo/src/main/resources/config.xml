@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+
+  <folder name="core" label="System core tables">
+	
+    <table name="users" label="System Users" table-name="users">
+      <column name="ID" label="Account" data-type="string" size="60" />
+      <column name="USERNAME" label="User name" data-type="string" size="60" />
+      <column name="PASSWORD" label="Password" data-type="string" size="60" />
+    </table>
+
+    <table name="roles" label="Roles" tablename="roles">
+      <column name="ID" label="Role ID" data-type="string" size="50" required="1" />
+      <column name="NAME" label="Role Name" data-type="string" size="50" required="1" />
+      <column name="AUDITLOG" label="Audit Logs" data-type="number" default="0" widget=""/>
+    </table>
+
+    <table name="menus" label="Menus" table-name="menu">
+      <column name="ID" label="Menu ID" data-type="string" size="70" required="1" />
+      <column name="NAME" label="Menu Name" data-type="string" size="70" required="1" />
+      <column name="FUNCTION" label="Menu FUNCTION" data-type="string" size="120" required="1" />
+      <column name="ICON" label="Menu Icon" data-type="string" size="70" required="1" />
+    </table>
+		
+    <table name="roleMenu" label="Privilege" tablename="role_menu">
+      <column name="FUNCTION" label="Privilege Function" data-type="string" size="100" />
+    </table>
+
+    <table name="userRole" label="Roles" table-name="user_role">
+    </table>
+		
+    <table-link parent="core.users"
+                child="core.userRole"
+                columns="USERS_ID,USERS_USERNAME"
+                label="User"
+                required="1"
+                on-delete="delete"/>
+                  
+    <table-link parent="core.roles"
+                child="core.userRole"
+                columns="ROLES_ID,ROLES_NAME"
+                label="Role"
+                required="1"
+                on-delete="delete"/>
+                
+  </folder>
+  
+  <folder name="window" label="Edit windows configuration">
+    
+  </folder>
+  
+  <folder name="pages" label="Page navigation">
+    <page name="usersNav" label="Accounts"
+          show-header="1"
+          show-count="1"
+          show-group-header="0"
+          table="core.users"
+          columns="ID,USERNAME"
+          order-by="ID"
+          page-size="25"
+          can-insert="1"
+          can-update="1"
+          can-delete="1"
+          can-filter="1"
+          can-search="0"
+          can-cell-edit="0"/>
+  </folder>
+  
+  <folder name="menu" label="System menu configuration">
+  
+   <menu name="contentNav" label="System configuration">
+     <link name="userNav" label="Users"  link="pages.usersNav" icon="ico_data.gif"/>
+   </menu>
+   
+   <menu name="scanNav" label="Scan tasks">
+     <link name="userNav" label="Users"  link="pages.usersNav" icon="ico_data.gif"/>
+   </menu>
+  
+  </folder>    
+	
+</config>
