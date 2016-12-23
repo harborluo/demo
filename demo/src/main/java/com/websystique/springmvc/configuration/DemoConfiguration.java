@@ -17,7 +17,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.websystique.springmvc")
+@ComponentScan(basePackages = "com.demo.springmvc")
 public class DemoConfiguration extends WebMvcConfigurerAdapter{
 	
 	@Override
