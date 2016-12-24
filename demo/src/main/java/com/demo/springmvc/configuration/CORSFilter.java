@@ -10,8 +10,16 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 public class CORSFilter implements Filter {
+	
+	private Logger getLogger() {
+		Logger log = LoggerFactory.getLogger(this.getClass());
+		return log;
+	}
 
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
 		HttpServletResponse response = (HttpServletResponse) res;
@@ -22,7 +30,11 @@ public class CORSFilter implements Filter {
 		chain.doFilter(req, res);
 	}
 
-	public void init(FilterConfig filterConfig) {}
+	public void init(FilterConfig filterConfig) {
+		
+		getLogger().debug("Init cross domain resource access configuration...");
+		
+	}
 
 	public void destroy() {}
 
