@@ -7,7 +7,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -66,7 +69,7 @@ public class UserRestController extends AbstractController {
      
     //-------------------Create a User--------------------------------------------------------
      
-    @RequestMapping(value = "/user/", method = RequestMethod.POST)
+    @PostMapping(value = "/user/")
     public ResponseEntity<Void> createUser(@RequestBody User user,    UriComponentsBuilder ucBuilder) {
     	
         getLogger().debug("Creating user '{}'..." , user.getUsername());
@@ -87,7 +90,7 @@ public class UserRestController extends AbstractController {
      
     //------------------- Update a User --------------------------------------------------------
      
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
+    @PutMapping(value = "/user/{id}")
     public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody User user) {
     	
     	getLogger().debug("Updating User {}");
@@ -111,7 +114,7 @@ public class UserRestController extends AbstractController {
     
     //------------------- Delete a User --------------------------------------------------------
      
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/user/{id}")
     public ResponseEntity<User> deleteUser(@PathVariable("id") long id) {
     	
         getLogger().debug("Fetching & Deleting User with id {}", id);
@@ -129,7 +132,7 @@ public class UserRestController extends AbstractController {
     
     //------------------- Delete All Users --------------------------------------------------------
      
-    @RequestMapping(value = "/user/", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/user/")
     public ResponseEntity<User> deleteAllUsers() {
     	
         getLogger().debug("Deleting All Users");
