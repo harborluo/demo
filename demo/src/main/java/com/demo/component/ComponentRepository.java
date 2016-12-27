@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +26,8 @@ public class ComponentRepository {
 	}
 	
 	private static final ComponentRepository instance = new ComponentRepository();
+	
+	private static List<String> tablePathList = new ArrayList<String>();
 	
 	public static ComponentRepository getInstance() {
 		return instance;
@@ -161,6 +164,11 @@ public class ComponentRepository {
         		if(comp.isCache()==true){
         			getLogger().debug("Component with path '{}' added to cache.", path);
         			cache.put(path, comp);
+        			
+        			if(comp instanceof Table){
+        				this.tablePathList.add(path);
+        			}
+        			
         		}
         	}else{
         		getLogger().error("Duplicate component entry found: " + path + " of type " + tagName);
@@ -174,22 +182,25 @@ public class ComponentRepository {
     	return comp;
     	
 	}
+	
+	
+
+	public List<String> getTablepathlist() {
+		return tablePathList;
+	}
 
 	public AbstractComponent getComponentByPath(String path) {
 		
-//		AbstractComponent comp = cache.get(path);
-		
-//		if(comp==null){
-//			getLogger().error("Component with path '{}' not found!",path);
-//		}
-		
-//		return comp;
 		return cache.get(path);
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ComponentRepository.getInstance().initialize();
+	}
+
+	public void destroy() {
+		cache.clear();		
 	}
 
 }

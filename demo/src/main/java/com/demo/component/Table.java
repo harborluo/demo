@@ -472,7 +472,7 @@ public class Table extends AbstractComponent{
 	public String generateDDL(){
 		
 		StringBuffer ddl = new StringBuffer();
-		ddl.append("create table ").append(getProperty("tablename")).append(" (\n  ");
+		ddl.append("create table ").append(getProperty("table-name")).append(" (\n  ");
 		ddl.append(adminColSQL);
 		
 		/**
@@ -493,7 +493,7 @@ public class Table extends AbstractComponent{
 			ddl.append(",\n  ").append(((Column) column).getDDL());
 		}
 		
-		String tableName = getProperty("tablename");
+		String tableName = getProperty("table-name");
 		
 		ddl.append(",\n constraint pk_"+(tableName.length()>25?tableName.substring(0,20):tableName)+" primary key ("+Column.RID+","+Column.INSTID+")");
 		
@@ -501,20 +501,7 @@ public class Table extends AbstractComponent{
 		
 		return ddl.toString();
 	}
-	
-	public boolean IgnoreUnmapFlag(){
-		if(!hasColumn("UNMAP_FLAG")) {
-			return true;
-		} else if (hasColumn("UNMAP_FLAG")) {
-			Column c = this.getColumnByName("UNMAP_FLAG");
-			if ("1".equals(c.getProperty("deprecated"))) {
-				return true;
-			}
-		} 
-		return false;
-
-	}
-	
+		
 	public boolean hasColumn(String columnName){
 		
 		for(AbstractComponent col : getChildren()){

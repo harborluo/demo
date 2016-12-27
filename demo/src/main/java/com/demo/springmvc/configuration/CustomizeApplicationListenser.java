@@ -1,5 +1,8 @@
 package com.demo.springmvc.configuration;
 
+import java.util.List;
+import java.util.Set;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,8 @@ import org.springframework.context.event.ContextStoppedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import com.demo.component.ComponentRepository;
+import com.demo.component.Table;
 import com.demo.springmvc.service.JdbcService;
 
 @Component
@@ -53,9 +58,25 @@ public class CustomizeApplicationListenser
 		if (startedEventFired == true) {
 			return;
 		}
-
-		getLogger().debug("{} tables found.", jdbcService.test());
 		
+	    ComponentRepository.getInstance().initialize();
+
+	    Set<String> createdTables = jdbcService.getAllTableNames();
+		getLogger().debug("{} tables found.", createdTables.size());
+	    List<String> tablePathList = ComponentRepository.getInstance().getTablepathlist();
+	    for(String path : tablePathList){
+	    	getLogger().debug(path);
+	    	Table tab = (Table) ComponentRepository.getInstance().getComponentByPath(path);
+//	    	getLogger().debug("table is empty? " + (tab==null));
+	    	String tableName = tab.getProperty("table-name").toUpperCase();
+	    	if(createdTables.contains(tableName)==false){
+	    		String ddl = tab.generateDDL();
+	    		jdbcService.doExecuteSQL(ddl);
+	    		getLogger().info("Table '{}' created: \n{}", tableName, ddl);
+	    		continue;
+	    	}
+	    	
+	    }
 		
 		getLogger().info("Web application started.");
 		
@@ -68,7 +89,7 @@ public class CustomizeApplicationListenser
 		if(stoppedEventFired){
 			return;
 		}
-		
+		 ComponentRepository.getInstance().destroy();
 		getLogger().info("Web application stopped.");
 		
 		stoppedEventFired=true;

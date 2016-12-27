@@ -22,7 +22,7 @@
       <column name="ICON" label="Menu Icon" data-type="string" size="70" required="1" />
     </table>
 		
-    <table name="roleMenu" label="Role - Menu" tablename="role_menu">
+    <table name="roleMenu" label="Role - Menu" table-name="role_menu">
       <column name="FUNCTION" label="Privilege Function" data-type="string" size="100" />
     </table>
 

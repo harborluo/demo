@@ -2,6 +2,7 @@ package com.demo.springmvc.service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
@@ -13,6 +14,8 @@ import com.demo.springmvc.service.vo.TableColumnEntity;
 public interface JdbcService {
 	
 	public int test();
+	
+	public Set<String> getAllTableNames();
 	
 	
 	/**

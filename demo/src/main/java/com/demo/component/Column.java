@@ -167,7 +167,7 @@ public class Column extends AbstractComponent {
 	
 	public String getDDL(){
 		String ddl = getName();
-		String datatype = getProperty("datatype");
+		String datatype = getProperty("data-type");
 		String stringPattern = "^(url|flexdate|string|datestring|alphanumber|regexpstring)$";
 		if(datatype.matches(stringPattern)){
 			ddl += " varchar2(" + getProperty("size") + ")";

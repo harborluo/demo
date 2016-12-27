@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +32,16 @@ public class JdbcServiceImpl implements JdbcService {
 	
 	@Autowired
 	JdbcTemplate template;
+
+	@Override
+	public Set<String> getAllTableNames() {
+		Set<String> tableNameSet = new HashSet<>();
+		SqlRowSet set = query("select table_name from user_tables");
+		while(set.next()){
+			tableNameSet.add(set.getString(1));
+		}
+		return tableNameSet;
+	}
 
 	@Override
 	public int test() {

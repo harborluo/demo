@@ -75,7 +75,7 @@ public abstract class AbstractComponent implements Serializable {
 	
 	public void setProperty(String key, String value){
 		
-		getLogger().debug("Component with path '{}' set property '{}' to '{}'.",getPath(), key, value);
+//		getLogger().debug("Component with path '{}' set property '{}' to '{}'.",getPath(), key, value);
 		
 		props.put(key, value);
 	}
