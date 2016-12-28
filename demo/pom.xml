@@ -42,7 +42,7 @@
 			<groupId>ojdbc6</groupId>
 			<scope>system</scope>
 			<version>11.2.0</version>
-			<systemPath>${basedir}/lib/ojdbc6.jar</systemPath>
+			<systemPath>${basedir}/src/lib/ojdbc6.jar</systemPath>
 		</dependency>
 
 		<dependency>
