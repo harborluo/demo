@@ -29,9 +29,14 @@
 			<version>${springframework.version}</version>
 		</dependency>
 
-		<!-- mvn install:install-file -Dfile=d:\ojdbc6.jar -DgroupId=com.oracle.jdbc 
-			-DartifactId=ojdbc6 -Dversion=11.2.0 -Dpackaging=jar <dependency> <groupId>com.oracle.jdbc</groupId> 
-			<artifactId>ojdbc6</artifactId> <version>11.2.0</version> </dependency> -->
+		<!-- mvn install:install-file -Dfile=d:\ojdbc6.jar -DgroupId=com.oracle.jdbc -DartifactId=ojdbc6 -Dversion=11.2.0 -Dpackaging=jar --> 
+		<!--
+		<dependency> 
+		    <groupId>com.oracle.jdbc</groupId> 
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0</version> 
+		</dependency> 
+	    -->
 		<dependency>
 			<artifactId>com.oracle.jdbc</artifactId>
 			<groupId>ojdbc6</groupId>
@@ -60,7 +65,6 @@
 			<version>2.0</version>
 		</dependency>
 		-->
-
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -104,6 +108,10 @@
 
 
 	</dependencies>
+	
+	<pluginRepositories>
+
+   </pluginRepositories>
 
 	<build>
 
@@ -114,8 +122,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.2</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 					<debug>true</debug>
 					<debuglevel>lines,vars,source</debuglevel>
 				</configuration>
@@ -147,7 +155,6 @@
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>9.2.10.v20150310</version>
-
 				<configuration>
 					<scanIntervalSeconds>10</scanIntervalSeconds>
 					<webApp>
@@ -157,8 +164,9 @@
 						<port>8080</port>
 					</httpConnector>
 				</configuration>
-
 			</plugin>
+			
+
 
 		</plugins>
 
