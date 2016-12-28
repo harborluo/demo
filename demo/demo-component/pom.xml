@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>com.harbor</groupId>
+		<artifactId>demo</artifactId>
+		<version>${project.version}</version>
+	</parent>
+
+	<artifactId>demo-component</artifactId>
+	<name>demo-component</name>
+	<packaging>jar</packaging>
+    <url>http://maven.apache.org</url>
+    
+	<dependencies>
+	
+		<!-- logback start -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+		</dependency>
+		<!-- logback end -->
+
+		<!-- https://mvnrepository.com/artifact/dom4j/dom4j -->
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+		</dependency>
+	</dependencies>
+	
+	<build>
+	
+	  <plugins>
+	  
+		<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-compiler-plugin</artifactId>
+	  </plugin>
+	  
+    </plugins>
+    
+  </build>
+  
+</project>
