@@ -146,6 +146,11 @@
 					<httpConnector>
 						<port>8080</port>
 					</httpConnector>
+					
+					<scanTargets>
+                      <scanTarget>demo-component/target/classes</scanTarget>
+                    </scanTargets>
+					
 				</configuration>
 			</plugin>
 
