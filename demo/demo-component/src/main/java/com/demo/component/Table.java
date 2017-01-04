@@ -12,7 +12,7 @@ public class Table extends AbstractComponent{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -4411594206043443332L;
+//	private static final long serialVersionUID = -4411594206043443332L;
 
 	private List<TableLink> source = new ArrayList<TableLink>();
 	
@@ -34,9 +34,9 @@ public class Table extends AbstractComponent{
 		AbstractComponent idColumn = new Column();
 		idColumn.setLabel("ID");
 		idColumn.setName("RID");
-		idColumn.setProperty("filterwidget", "text");
-		idColumn.setProperty("editwidget", "Text");
-		idColumn.setProperty("datatype", "number");
+		idColumn.setProperty("filter-widget", "text");
+		idColumn.setProperty("edit-widget", "Text");
+		idColumn.setProperty("data-type", "number");
 		
 		this.addChildren(idColumn);
 		
@@ -44,26 +44,26 @@ public class Table extends AbstractComponent{
 		AbstractComponent lastModifiedUsrColumn = new Column();
 		lastModifiedUsrColumn.setLabel("Last Modified By");
 		lastModifiedUsrColumn.setName("LMUSR");
-		lastModifiedUsrColumn.setProperty("filterwidget", "text");
-		lastModifiedUsrColumn.setProperty("datatype", "string");
+		lastModifiedUsrColumn.setProperty("filter-widget", "text");
+		lastModifiedUsrColumn.setProperty("data-type", "string");
 		this.addChildren(lastModifiedUsrColumn);
 		
 		//Bug 27425 - Add a new column 'Last Update Time' to all tables
 		AbstractComponent lastModifiedColumn = new Column();
 		lastModifiedColumn.setLabel("Last Modified Date");
 		lastModifiedColumn.setName("LMDATE");
-		lastModifiedColumn.setProperty("filterwidget", "text");
+		lastModifiedColumn.setProperty("filter-widget", "text");
 //		lastModifiedColumn.setProperty("editwidget", "Text");
-		lastModifiedColumn.setProperty("datatype", "date");
+		lastModifiedColumn.setProperty("data-type", "date");
 		this.addChildren(lastModifiedColumn);
 
 		//BDNA-13807 Please add "Create date" column in Content DB
 		AbstractComponent createDateColumn = new Column();
 		createDateColumn.setLabel("Created Date");
 		createDateColumn.setName("CREATEDATE");
-		createDateColumn.setProperty("filterwidget", "text");
+		createDateColumn.setProperty("filter-widget", "text");
 //		createDateColumn.setProperty("editwidget", "Text");
-		createDateColumn.setProperty("datatype", "date");
+		createDateColumn.setProperty("data-type", "date");
 		this.addChildren(createDateColumn);
 		
 	}

@@ -47,7 +47,7 @@ public class Page extends AbstractComponent {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6025431593202137659L;
+//	private static final long serialVersionUID = 6025431593202137659L;
 
 
 	

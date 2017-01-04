@@ -63,6 +63,10 @@ public class Column extends AbstractComponent {
 	   
 	public String getSql(){
 		
+		if(getParent()==null){
+			return "";
+		}
+		
 		String tableAlias = getParent().getName();
 		
 		String widget = getProperty("edit-widget");

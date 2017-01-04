@@ -15,9 +15,9 @@ public abstract class AbstractComponent implements Serializable {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -1288115737975505702L;
+//	private static final long serialVers0.0ionUID = -1288115737975505702L;
 	
-	private AbstractComponent parent;
+	private AbstractComponent parent=null;
 	
 	public AbstractComponent getParent() {
 		return parent;

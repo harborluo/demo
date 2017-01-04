@@ -6,7 +6,7 @@ public class QueryField extends Column {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6718285820817505821L;
+//	private static final long serialVersionUID = 6718285820817505821L;
 	
 	private String tableAlias, columnAlias, headerLabel,label;
 	private Column column;

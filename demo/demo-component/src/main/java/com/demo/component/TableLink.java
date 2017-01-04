@@ -8,7 +8,7 @@ public class TableLink extends Page {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -177431807399270248L;
+//	private static final long serialVersionUID = -177431807399270248L;
 
 	@Override
 	public Table getTargetTable() {
