@@ -25,7 +25,7 @@ public class LoginController extends AbstractController  {
 	
 	
 	@RequestMapping(value="/test", method = RequestMethod.GET)
-	public ResponseEntity<Table> test() {
+	public ResponseEntity<Table> test() throws ClassNotFoundException {
 //		String message = "Nice to meet you!";
 //		Table tab = new Table();
 //		tab.setLabel(message);
@@ -34,6 +34,8 @@ public class LoginController extends AbstractController  {
 //		tab.setProperty("table-name", "test_table_name");
 //		tab.setProperty("schema", "demo_schema");
 		Table tab = (Table) ComponentRepository.getInstance().getComponentByPath("core.users");
+		Class rt_class = Class.forName("java.util.ArrayList");
+		rt_class.getAnnotation(tab.getClass());
 //		getLogger().debug(tab.generateDDL());
 //		return new ResponseEntity<ResponseDemo>(new ResponseDemo(), HttpStatus.OK);
 		return new ResponseEntity<Table>(tab, HttpStatus.OK);
@@ -48,7 +50,7 @@ class ResponseDemo{
 	private List<String> data = new ArrayList<>();
 	public ResponseDemo(){
 		for(int i=0;i<20;i++){
-			data.add("test\"abc\"《j花砖酒壮怂人胆的》<asdfset><asdf>/"+i);
+			data.add("test\"abc\"中华人民共和国<asdfset><asdf>/"+i);
 		}
 	}
 	

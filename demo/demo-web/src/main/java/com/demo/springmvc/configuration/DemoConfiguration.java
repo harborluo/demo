@@ -17,6 +17,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import org.apache.commons.dbcp.BasicDataSource;
+
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.demo.springmvc")
@@ -52,12 +54,22 @@ public class DemoConfiguration extends WebMvcConfigurerAdapter{
 	@Bean
 	public DataSource getDataSource() {
 		
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName(driverClassName);
 		dataSource.setUrl(jdbcUrl);
 		dataSource.setUsername(jdbcUsername);
 		dataSource.setPassword(jdbcPassword);
-		
+		dataSource.setDefaultAutoCommit(false);
+		dataSource.setInitialSize(10);
+		dataSource.setMaxActive(100);
+		dataSource.setMaxIdle(30);
+		dataSource.setMinIdle(15);
+		dataSource.setMinEvictableIdleTimeMillis(1000);
+		dataSource.setTimeBetweenEvictionRunsMillis(5000);
+		dataSource.setTestOnBorrow(true);
+		dataSource.setTestWhileIdle(true);
+		dataSource.setValidationQuery("select 1 from dual");
 		return dataSource;
 	}
 	     	 
